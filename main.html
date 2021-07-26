@@ -1,0 +1,30 @@
+<html>
+
+<body>
+    <div id="new">
+        <h3> Update Inventory Quantity In Hand</h3>
+        <label for="fname">Enter new quantity</label>
+        <input type="text" id="qty1" name="fname"><br><br>
+        <button onclick="call_Api()">Update</button>
+    </div>
+    <script>
+        function call_Api() {
+            newQty = document.getElementById("qty1").value;
+            const Http = new XMLHttpRequest();
+            const url = 'http://127.0.0.1:5000/' + newQty.toString()
+            if (parseInt(newQty) > 0) {
+                Http.open("GET", url);
+                Http.send();
+                Http.onreadystatechange = (e) => {
+                    console.log(Http.responseText)
+                }
+            }
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>
