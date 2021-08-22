@@ -3,8 +3,8 @@ newStockMove = {
                 'product_id': 1579,
                 'company_id': 1,
                 'date': '2021-08-01 09:00:00',
-                'location_dest_id': 8,
-                'location_id': 15,
+                'location_dest_id': 8, # Auckland Warehouse
+                'location_id': 15, # Virtual Locations/Production
                 'name': 'New',
                 'procure_method': 'make_to_stock',
                 'product_uom_qty': 1,
@@ -27,9 +27,9 @@ newMO = {
 models.execute_kw(db, uid, password, 'mrp.production', 'create', [newMO])
 
 # 2b. Update move_finished_ids
-iD = 55
+iD = 55 # This is the id of the M.O.
 attr = {
-        'move_finished_ids': [313]
+        'move_finished_ids': [313] # This is the ID of the move
        }
 models.execute_kw(db, uid, password, 'mrp.production', 'write', [[iD], attr])
 
@@ -44,7 +44,7 @@ newStockMove = {
                 'procure_method': 'make_to_stock',
                 'product_uom_qty': 39,
                 'product_uom': 1,
-                'raw_material_production_id': 56,
+                'raw_material_production_id': 56, #This is the MO ID.
                 'picking_type_id': 13,
                 'warehouse_id': 1
 
