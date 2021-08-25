@@ -1,0 +1,70 @@
+Authenticate with Odoo Server
+
+Post Call
+http://alumi-test-20210818.odoo.com/web/session/authenticate
+JSON Payload
+{
+	"jsonrpc": "2.0",
+	"params": {
+		"login": "Your user name e.g., yuan.gao@alumi.co.nz",
+		"password": "Your password, not the API key",
+		"db": "alumi-test-20210818"
+	}
+}
+
+
+Query record.stock.history
+
+Post Call
+https://alumi-test-20210818.odoo.com/web/dataset/call_kw/report.stock.quantity/read_group
+JSON Payload
+{
+    "jsonrpc": "2.0",
+    "method": "call",
+    "params": {
+        "args": [],
+        "model": "report.stock.quantity",
+        "method": "read_group",
+        "kwargs": {
+            "context": {
+                "fill_temporal": true,
+                "lang": "en_US",
+                "tz": "Pacific/Auckland",
+                "uid": 2,
+                "allowed_company_ids": [
+                    1
+                ]
+            },
+            "domain": [
+                "&",
+                "&",
+                [
+                    "state",
+                    "=",
+                    "forecast"
+                ],
+                [
+                    "warehouse_id",
+                    "=",
+                    1
+                ],
+                [
+                    "product_tmpl_id",
+                    "=",
+                    2264
+                ]
+            ],
+            "fields": [
+                "date",
+                "product_id",
+                "product_qty"
+            ],
+            "groupby": [
+                "date:day",
+                "product_id"
+            ],
+            "lazy": false
+        }
+    },
+    "id": 779002923
+}
